@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var util = require('util');
+var jolokia = require("../index");
+var cli = require('cli').enable('version');
+
+cli.setApp('jmx4node', '0.0.1');
+cli.parse({
+    url:   ['u', 'the url of the server to query', 'url']
+  }, {
+    list:   'list the bean'
+  });
+
+cli.main(function(args, options) {
+    //this.ok("command: " + util.inspect(this));
+    
+    if (!options.url) {
+      cli.error("please specify a url using the -u option");
+      process.exit(1);
+    }
+    
+    client = new jolokia(options.url);
+    
+    if (this.command == 'list') {
+       client.list(undefined, function(response){
+         console.log(util.inspect(response, true, 10));
+       });
+    } else {
+      cli.error("please specify a valid command");
+      process.exit(1);
+    }
+});
