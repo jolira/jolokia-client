@@ -14,6 +14,8 @@ function usage(exit) {
   console.log("usage: " + process.argv[1] + " <url> <command> [params]");
   console.log("  valid <command>s are");
   console.log("    list [<mbean>]");
+  console.log("    read <mbean> [<attribute>]");
+  console.log("    dump [<mbean>]");
   
   if (exit) {
     process.exit(1);
@@ -35,6 +37,10 @@ if (command === 'list') {
   });
 } else if (command === 'read') {
   client.read(args[0], args[1], function(response){
+    console.log(util.inspect(response, true, 10));
+  });
+} else if (command === 'dump') {
+  client.dump(args[0], function(response){
     console.log(util.inspect(response, true, 10));
   });
 } else {
