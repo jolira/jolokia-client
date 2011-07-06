@@ -86,7 +86,7 @@ There is also a jxm2node command line utility included to access JMX information
 The utility must be invoked with a valid <url>, such as ``http://my.server.com/jolokia``.
 Also, a command must be provided. Valid commands are documented below.
 
-#### list \[<mbean>\]
+#### ``list [<mbean>]``
 
 Describe all mbeans for the given server. If no parameter is passed, all available  mbeans
 of the server are part of the output.
@@ -99,7 +99,7 @@ jmx4node http://my.server.com/jolokia list JMImplementation
 jmx4node http://my.server.com/jolokia list JMImplementation:type=MBeanServerDelegate
 ```
 
-#### read <mbean> \[<attribute>\]
+#### ``read <mbean> [<attribute>]``
 
 Read the attributes of  all mbeans for the given server. If no <attribute> parameter is passed, all 
 available attributes of the mbean are part of the output.
@@ -111,7 +111,7 @@ jmx4node http://my.server.com/jolokia read JMImplementation:type=MBeanServerDele
 jmx4node http://my.server.com/jolokia read JMImplementation ImplementationVersion:
 ```
 
-#### dump \[<mbean>\]
+#### ``dump [<mbean>]``
 
 Read all the values of an <mbean>, if a bean is provide, or all the values on the server otherwise
 
@@ -122,4 +122,3 @@ jmx4node http://my.server.com/jolokia dump
 jmx4node http://my.server.com/jolokia dump JMImplementation
 jmx4node http://my.server.com/jolokia dump JMImplementation:type=MBeanServerDelegate
 ```
-. 
