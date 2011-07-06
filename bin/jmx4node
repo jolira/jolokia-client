@@ -2,31 +2,41 @@
 
 var util = require('util');
 var jolokia = require("../index");
-var cli = require('cli').enable('version');
+var _ = require("underscore");
 
-cli.setApp('jmx4node', '0.0.1');
-cli.parse({
-    url:   ['u', 'the url of the server to query', 'url']
-  }, {
-    list:   'list the bean'
-  });
+process.on('uncaughtException', function(err) {
+  console.log("exception while running: " + err.message + "\n" + err.stack + "\n");
 
-cli.main(function(args, options) {
-    //this.ok("command: " + util.inspect(this));
-    
-    if (!options.url) {
-      cli.error("please specify a url using the -u option");
-      process.exit(1);
-    }
-    
-    client = new jolokia(options.url);
-    
-    if (this.command == 'list') {
-       client.list(undefined, function(response){
-         console.log(util.inspect(response, true, 10));
-       });
-    } else {
-      cli.error("please specify a valid command");
-      process.exit(1);
-    }
+  usage(true);
 });
+
+function usage(exit) {
+  console.log("usage: " + process.argv[1] + " <url> <command> [params]");
+  console.log("  valid <command>s are");
+  console.log("    list [<mbean>]");
+  
+  if (exit) {
+    process.exit(1);
+  }
+}
+
+if (process.argv.length < 4) {
+  usage(true);
+}
+
+var url = process.argv[2];
+var client = new jolokia(url);
+var command = process.argv[3];
+var args = _.rest(process.argv, 4);
+
+if (command === 'list') {
+  client.list(args, function(response){
+    console.log(util.inspect(response, true, 10));
+  });
+} else if (command === 'read') {
+  client.read(args[0], args[1], function(response){
+    console.log(util.inspect(response, true, 10));
+  });
+} else {
+  usage(true);
+}

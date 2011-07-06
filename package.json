@@ -2,7 +2,7 @@
   "name": "jolokia-client",
   "description": "execute queries agains the jolokia JMX bridge",
   "url" : "http://github.com/jolia/jolokia-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Joachim Kainz <info@jolira.com>",
   "contributors": [ 
     { "name": "Joachim Kainz", "email": "info@jolira.com" }
@@ -16,5 +16,5 @@
   "main": "index",
   "bin": { "jmx4node": "./bin/jmx4node" },
   "engines": { "node": ">= 0.4.1" },
-  "dependencies" : { "cli" : ">= 0.3.6"}
+  "dependencies" : { "underscore" : ">= 1.1.6"}
 }
