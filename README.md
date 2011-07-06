@@ -25,7 +25,7 @@ var client = new jolokia("http://my.server.com/jolokia");
 
 ``mbeans`` is a string that identifies one particular mbean or domain name (such
 as ``"JMImplementation"`` or ``"JMImplementation:type=MBeanServerDelegate"``) or an
-array or such names (such as ``\["JMImplementation", "Catalina"\]``). The paramter
+array or such names (such as ``["JMImplementation", "Catalina"]``). The parameter
 may also omitted to retrieve information about all mbeans available
 on the server.
 
@@ -81,7 +81,7 @@ jmx4node
 
 There is also a jxm2node command line utility included to access JMX information.
 
-### Usage: ``jxm2node <url> <command> \[params\]``
+### Usage: ``jxm2node <url> <command> [params]``
 
 The utility must be invoked with a valid <url>, such as ``http://my.server.com/jolokia``.
 Also, a command must be provided. Valid commands are documented below.
