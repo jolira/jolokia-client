@@ -1,29 +1,28 @@
 #!/usr/bin/env node
 
+var _usage = "Usage: $0 <url> <command> [params]\n" +
+    "  valid <command>s are\n" +
+    "    list [<mbean>]\n" +
+    "    read <mbean> [<attribute>]" +
+    "    dump [<mbean>]";
+
 var util = require('util');
 var jolokia = require("../index");
 var _ = require("underscore");
+var argv = require('optimist').usage(_usage).argv;
 
 process.on('uncaughtException', function(err) {
   console.log("exception while running: " + err.message + "\n" + err.stack + "\n");
-
-  usage(true);
+  process.exit(1);
 });
 
-function usage(exit) {
-  console.log("usage: " + process.argv[1] + " <url> <command> [params]");
-  console.log("  valid <command>s are");
-  console.log("    list [<mbean>]");
-  console.log("    read <mbean> [<attribute>]");
-  console.log("    dump [<mbean>]");
-  
-  if (exit) {
-    process.exit(1);
-  }
+function usage() {
+  argv.showHelp();
+  process.exit(1);
 }
 
 if (process.argv.length < 4) {
-  usage(true);
+  usage();
 }
 
 var url = process.argv[2];
@@ -44,5 +43,5 @@ if (command === 'list') {
     console.log(util.inspect(response, true, 10));
   });
 } else {
-  usage(true);
+  usage();
 }
