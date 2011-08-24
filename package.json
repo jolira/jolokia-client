@@ -2,7 +2,7 @@
   "name": "jolokia-client",
   "description": "execute queries agains the jolokia JMX bridge",
   "url" : "http://github.com/jolia/jolokia-client",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Joachim Kainz <info@jolira.com>",
   "contributors": [ 
     { "name": "Joachim Kainz", "email": "info@jolira.com" }

@@ -1,7 +1,8 @@
 Overview
 ========
 
-A client for retrieving information from the JXM bridge provided by http://www.jolokia.org/.
+A node.js client for retrieving information from the JXM bridge provided by Roland
+Huss at http://www.jolokia.org/.
 
 Usage
 -----
@@ -72,6 +73,19 @@ client.read("JMImplementation:type=MBeanServerDelegate", function(response){
 });
 // read the "ImplementationVersion" attribute of "JMImplementation:type=MBeanServerDelegate"
 client.read("JMImplementation:type=MBeanServerDelegate", "ImplementationVersion", function(response){
+  console.log(util.inspect(response, true, 10));
+});
+```
+
+It is also possible to read multiple metric at the same time:
+
+```
+// read all attributes of "JMImplementation:type=MBeanServerDelegate"
+client.read(["JMImplementation:type=MBeanServerDelegate", "java.lang:type=Memory"], function(response){
+  console.log(util.inspect(response, true, 10));
+});
+// read the "ImplementationVersion" attribute of "JMImplementation:type=MBeanServerDelegate"
+client.read([{mbean: "JMImplementation:type=MBeanServerDelegate", attribute="ImplementationVersion"}], function(response){
   console.log(util.inspect(response, true, 10));
 });
 ```
