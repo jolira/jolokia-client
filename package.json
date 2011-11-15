@@ -2,14 +2,14 @@
   "name": "jolokia-client",
   "description": "execute queries agains the jolokia JMX bridge",
   "url" : "http://github.com/jolia/jolokia-client",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "Joachim Kainz <info@jolira.com>",
-  "contributors": [ 
+  "contributors": [
     { "name": "Joachim Kainz", "email": "info@jolira.com" }
   ],
   "bugs": {
     "mail": "dev@jolira.com",
-    "web": "http://github.com/jolira/jolokia-client/issues"
+    "url": "http://github.com/jolira/jolokia-client/issues"
   },
   "keywords": ["node.js", "jmx", "jolokia"],
   "repository": "git://github.com/jolira/jolokia-client",
