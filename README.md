@@ -1,7 +1,7 @@
 Overview
 ========
 
-A node.js client for retrieving information from the JXM bridge provided by Roland
+A node.js client for retrieving information from the JMX bridge provided by Roland
 Huss at http://www.jolokia.org/.
 
 Usage
@@ -17,7 +17,7 @@ to be added.
 var jolokia = require("jolokia-client");
 var util = require('util'); // used by the examples below
 
-var client = new jolokia("http://my.server.com/jolokia");
+var client = new jolokia("http://my.server.com/jolokia/");
 ```
 
 ### List the available mbeans
