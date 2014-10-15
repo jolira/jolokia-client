@@ -90,6 +90,24 @@ client.read([{mbean: "JMImplementation:type=MBeanServerDelegate", attribute="Imp
 });
 ```
 
+### Exec mbean method
+
+#### client.exec(mbean, operation, arguments, callback)
+
+```
+//execute the operation "operation" on mbean1 with no arguments for the call:
+client.exec("mbean1", "operation", [], function(result){
+            console.log(...);
+});
+
+//execute the operation "operation" on all mbeans with "argument1" and "argument2" as arguments for each call:
+client.exec(["mbean1","mbean2"], "operation", ["argument1", "argument2"], function(result){
+            console.log(...);
+});
+
+```
+
+
 jmx4node
 --------
 
